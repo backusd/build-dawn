@@ -82,8 +82,8 @@ rem
 
 cmake                                         ^
   -S dawn                                     ^
-  -B dawn.build                               ^
-  -D CMAKE_BUILD_TYPE=Release                 ^
+  -B dawn.build.Debug                         ^
+  -D CMAKE_BUILD_TYPE=Debug                   ^
   -D CMAKE_POLICY_DEFAULT_CMP0091=NEW         ^
   -D CMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded ^
   -D BUILD_SHARED_LIBS=OFF                    ^
@@ -101,11 +101,12 @@ cmake                                         ^
   || exit /b 1
 
 set CL=/Wv:18
-cmake.exe --build dawn.build --config Release --target webgpu --parallel || exit /b 1
+cmake.exe --build dawn.build.Debug --config Debug --target webgpu --parallel || exit /b 1
 
-copy /y dawn.build\gen\include\dawn\webgpu.h          .\Release\
-copy /y dawn.build\Release\webgpu.dll                 .\Release\
-copy /y dawn.build\src\dawn\native\Release\webgpu.lib .\Release\
+copy /y dawn.build.Debug\gen\include\dawn\webgpu.h          .\Debug\
+copy /y dawn.build.Debug\Debug\webgpu.dll                   .\Debug\
+copy /y dawn.build.Debug\Debug\webgpu.pdb                   .\Debug\
+copy /y dawn.build.Debug\src\dawn\native\Debug\webgpu.lib   .\Debug\
 
 rem
 rem done!
