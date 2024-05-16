@@ -7,3 +7,5 @@ webgpu.lib
 dawn_commit.txt
 *.zip
 Debug
+dawn-Debug.build
+dawn-Release.build
